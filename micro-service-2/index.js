@@ -78,7 +78,7 @@ app.post('/login', async (req, res) => {
 
         await updateUserState(req.body.email, "online");
 
-        return res.status(200).send("Login Success!");
+        return res.status(200).send({ message: "Login Success!", email: req.body.email });
     } catch (error) {
         console.error('Error during process:', error);
         return res.status(500).send("Login Failed");
@@ -90,3 +90,15 @@ const PORT = 8081;
 app.listen(PORT, () => {
     console.log(`Microservice 2 running on ${PORT}`);
 });
+
+/**
+ * References:
+ * [1] "Query a Cloud Firestore database", Google Cloud Firestore Documentation,
+ *     [Online]. Available: https://googleapis.dev/nodejs/firestore/latest/Query.html
+ * [2] "bcrypt - npm", [Online]. Available: https://www.npmjs.com/package/bcrypt
+ *
+ * Description: This code snippet is based on the official Google Cloud Firestore documentation [1],
+ * which provides guidelines for Querying a Cloud Firestore database using the server client library in Node.js.
+ * The password hashing functionality in this code snippet utilizes the 'bcrypt' library [2],
+ * a widely used Node.js library for secure password hashing. For detailed usage instructions, refer to the 'bcrypt' package documentation [2].
+ */
