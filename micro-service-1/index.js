@@ -59,6 +59,9 @@ app.listen(PORT, () => {
     console.log(`Server deployed on port ${PORT}`);
 });
 
+module.exports = app;
+
+
 /**
  * References:
  * [1] "Create a Cloud Firestore database", Google Cloud Firestore Documentation,
