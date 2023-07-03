@@ -5,7 +5,7 @@ steps:
     args:
       - 'build'
       - '-t'
-      - 'us-east1-docker.pkg.dev/k8s-b00930528/cloud-k8/micro-service-1:latest'
+      - 'us-east1-docker.pkg.dev/assignment-2-391412/sdp-assignment2/micro-service-1:latest'
       - './micro-service-1'
   
   # Build Docker image for micro-service-2
@@ -14,7 +14,7 @@ steps:
     args:
       - 'build'
       - '-t'
-      - 'us-east1-docker.pkg.dev/k8s-b00930528/cloud-k8/micro-service-2:latest'
+      - 'us-east1-docker.pkg.dev/assignment-2-391412/sdp-assignment2/micro-service-2:latest'
       - './micro-service-2'
   
   # Build Docker image for micro-service-3
@@ -23,7 +23,7 @@ steps:
     args:
       - 'build'
       - '-t'
-      - 'us-east1-docker.pkg.dev/k8s-b00930528/cloud-k8/micro-service-3:latest'
+      - 'us-east1-docker.pkg.dev/assignment-2-391412/sdp-assignment2/micro-service-3:latest'
       - './micro-service-3'
 
   # Push the Docker images to Artifact Registry
@@ -31,16 +31,16 @@ steps:
     id: 'Push Images to Artifact Registry 1'
     args:
       - 'push'
-      - 'us-east1-docker.pkg.dev/k8s-b00930528/cloud-k8/micro-service-1:latest'
+      - 'us-east1-docker.pkg.dev/assignment-2-391412/sdp-assignment2/micro-service-1:latest'
   
   - name: 'gcr.io/cloud-builders/docker'
     id: 'Push Images to Artifact Registry 2'
     args:
       - 'push'
-      - 'us-east1-docker.pkg.dev/k8s-b00930528/cloud-k8/micro-service-2:latest'
+      - 'us-east1-docker.pkg.dev/assignment-2-391412/sdp-assignment2/micro-service-2:latest'
   
   - name: 'gcr.io/cloud-builders/docker'
     id: 'Push Images to Artifact Registry 3'
     args:
       - 'push'
-      - 'us-east1-docker.pkg.dev/k8s-b00930528/cloud-k8/micro-service-3:latest'
+      - 'us-east1-docker.pkg.dev/assignment-2-391412/sdp-assignment2/micro-service-3:latest'
