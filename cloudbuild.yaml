@@ -44,3 +44,48 @@ steps:
     args:
       - 'push'
       - 'us-east1-docker.pkg.dev/assignment-2-391412/sdp-assignment2/micro-service-3:latest'
+
+  # Deploy micro-service-1 to Cloud Run
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: gcloud
+    args:
+      - 'run'
+      - 'deploy'
+      - 'micro-service-1-instance'
+      - '--image'
+      - 'us-east1-docker.pkg.dev/assignment-2-391412/sdp-assignment2/micro-service-1:latest'
+      - '--platform'
+      - 'managed'
+      - '--region'
+      - 'us-east1'
+      - '--allow-unauthenticated'
+
+  # Deploy micro-service-2 to Cloud Run
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: gcloud
+    args:
+      - 'run'
+      - 'deploy'
+      - 'micro-service-2-instance'
+      - '--image'
+      - 'us-east1-docker.pkg.dev/assignment-2-391412/sdp-assignment2/micro-service-2:latest'
+      - '--platform'
+      - 'managed'
+      - '--region'
+      - 'us-east1'
+      - '--allow-unauthenticated'
+
+  # Deploy micro-service-3 to Cloud Run
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: gcloud
+    args:
+      - 'run'
+      - 'deploy'
+      - 'micro-service-3-instance'
+      - '--image'
+      - 'us-east1-docker.pkg.dev/assignment-2-391412/sdp-assignment2/micro-service-3:latest'
+      - '--platform'
+      - 'managed'
+      - '--region'
+      - 'us-east1'
+      - '--allow-unauthenticated'

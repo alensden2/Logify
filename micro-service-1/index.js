@@ -14,8 +14,7 @@ app.use(bodyParser.json());
 app.use(helmet());
 
 const db = new FireStore({
-    projectId: 'assignment-2-391412',
-    keyFilename: '../../../../../../cynos/Downloads/assignment-2-391412-7103b50d9c53.json',
+    projectId: 'assignment-2-391412'
 });
 
 const saltRounds = 10;
@@ -53,7 +52,7 @@ app.post('/register', async (req, res) => {
     }
 });
 
-const PORT = 8080;
+const PORT = process.env.PORT || 8080;
 
 app.listen(PORT, () => {
     console.log(`Server deployed on port ${PORT}`);
@@ -68,6 +67,7 @@ module.exports = app;
  *     [Online]. Available: https://cloud.google.com/firestore/docs/create-database-server-client-library#firestore_setup_dataset_pt1-nodejs
  * [2] "bcrypt - npm", [Online]. Available: https://www.npmjs.com/package/bcrypt
  *
+ * 
  * Description: This code snippet is based on the official Google Cloud Firestore documentation [1],
  * which provides guidelines for creating a Cloud Firestore database using the server client library in Node.js.
  * The password hashing functionality in this code snippet utilizes the 'bcrypt' library [2],

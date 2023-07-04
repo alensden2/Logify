@@ -15,8 +15,7 @@ app.use(bodyParser.json());
 app.use(helmet());
 
 const db = new FireStore({
-    projectId: 'assignment-2-391412',
-    keyFilename: '../../../../../../cynos/Downloads/assignment-2-391412-7103b50d9c53.json'
+    projectId: 'assignment-2-391412'
 });
 
 // Utility function to update user state
@@ -85,7 +84,7 @@ app.post("/logout", async (req, res) => {
 });
 
 
-const PORT = 8082;
+const PORT = process.env.PORT || 8082;
 app.listen(PORT, () => {
     console.log(`Service 3 running @ ${PORT}`);
 })
