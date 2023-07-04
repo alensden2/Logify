@@ -47,6 +47,7 @@ steps:
 
   # Deploy micro-service-1 to Cloud Run
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    id: 'Deployment 1'
     entrypoint: gcloud
     args:
       - 'run'
@@ -62,6 +63,7 @@ steps:
 
   # Deploy micro-service-2 to Cloud Run
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    id: 'Deployment 2'
     entrypoint: gcloud
     args:
       - 'run'
@@ -77,6 +79,7 @@ steps:
 
   # Deploy micro-service-3 to Cloud Run
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    id: 'Deployment 3'
     entrypoint: gcloud
     args:
       - 'run'

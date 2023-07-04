@@ -46,30 +46,59 @@ function Form({ isLogin }) {
     const mainBtnEvent = async (event) => {
         event.preventDefault();
       
-        const formData = {
-          email,
-          location: isLogin ? '' : 'Halifax',
-          name: isLogin ? '' : `${firstName} ${lastName}`,
-          password,
-        };
+        if (isLogin) {
+          const formData = {
+            email,
+            password,
+          };
       
-        try {
-          const response = await axios.post('https://micro-service-1-instance-2p7cpjxoqq-ue.a.run.app/register', formData);
-        console.log(formData);
-          if (response.status === 200) {
-            // navigate('/profile', {
-            //   state: {
-            //     email: formData.email,
-            //   },
-            // });
-          } else {
-            setPasswordError(response.data.message);
+          try {
+            const response = await axios.post('https://micro-service-2-instance-2p7cpjxoqq-ue.a.run.app/login', formData);
+            console.log(formData);
+      
+            if (response.status === 200) {
+              alert('Login Successful');
+              navigate('/profile', {
+                state: {
+                  email: response.data.email,
+                },
+              });
+            } else {
+              setPasswordError(response.data.message);
+            }
+          } catch (error) {
+            alert('Invalid Credentials');
+            console.log('Error:', error);
           }
-        } catch (error) {
-          alert('Invalid Credentials');
-          console.log('Error:', error);
+        } else {
+          const formData = {
+            email,
+            location: 'Halifax',
+            name: `${firstName} ${lastName}`,
+            password,
+          };
+      
+          try {
+            const response = await axios.post('https://micro-service-1-instance-2p7cpjxoqq-ue.a.run.app/register', formData);
+            console.log(formData);
+      
+            if (response.status === 200) {
+              alert('Registration Successful, please login');
+              navigate('/', {
+                state: {
+                  email: formData.email,
+                },
+              });
+            } else {
+              setPasswordError(response.data.message);
+            }
+          } catch (error) {
+            alert('Invalid Credentials');
+            console.log('Error:', error);
+          }
         }
       };
+      
       
 
 
