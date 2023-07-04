@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useLocation, useNavigate } from 'react-router-dom';
+import Navbar from './components/navbar';
+import Button from '@mui/material/Button';
 
 function ProfilePage() {
   const location = useLocation();
@@ -28,7 +30,6 @@ function ProfilePage() {
       await axios.post('https://micro-service-3-instance-2p7cpjxoqq-ue.a.run.app/logout', {
         email: email,
       });
-      // Perform additional logout logic here, such as clearing session/local storage, etc.
       navigate('/');
     } catch (error) {
       console.log('Error:', error);
@@ -36,19 +37,26 @@ function ProfilePage() {
   };
 
   return (
-    <div>
-      <h1>Welcome to your profile</h1>
-      <p>Your email: {email}</p>
+    <>
+    <Navbar />
+    <div style={{ padding: '20px' }}>
+      
+      <h1 style={{ textAlign: 'left' }}>Welcome to your profile</h1>
+      <p style={{ textAlign: 'left' }}>Your email: {email}</p>
 
-      <h2>The following users are online:</h2>
-      <ul>
+      <h2 style={{ textAlign: 'left' }}>The following users are online:</h2>
+      <ul style={{ textAlign: 'left' }}>
         {onlineUsers.map((user) => (
           <li key={user.Email}>{user.Email}</li>
         ))}
       </ul>
 
-      <button onClick={handleLogout}>Logout</button>
+      <Button variant="contained" color="primary" onClick={handleLogout} sx={{ marginTop: '20px' }}>
+        Logout
+      </Button>
     </div>
+    </>
+    
   );
 }
 

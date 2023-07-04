@@ -26,7 +26,7 @@ function Navbar() {
                             textDecoration: 'none',
                         }}
                     >
-                        Vogmanic
+                        SDP 2
                     </Typography>
 
                 </Toolbar>
