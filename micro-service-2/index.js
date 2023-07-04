@@ -9,11 +9,12 @@ const FireStore = require("@google-cloud/firestore");
 const bodyParser = require("body-parser");
 const helmet = require("helmet");
 const bcrypt = require("bcrypt");
+const cors = require('cors')
 
 const app = express();
 app.use(bodyParser.json());
 app.use(helmet());
-
+app.use(cors());
 const db = new FireStore({
     projectId: 'assignment-2-391412'
 });
